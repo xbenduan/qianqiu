@@ -1,7 +1,7 @@
-import { createSignal, For, Match, Show, Switch } from "solid-js";
+import { createSignal, For, Match, Show, Switch } from 'solid-js';
 
 const JsonRender = () => {
-  const [index, setIndex] = createSignal("编码");
+  const [index, setIndex] = createSignal('编码');
   const [json, setJson] = createSignal(`{
                 "attrKey": "颜色",
                 "attrType": "ssss",
@@ -17,20 +17,20 @@ const JsonRender = () => {
     try {
       return JSON.parse(json());
     } catch (error) {
-      return "";
+      return '';
     }
   };
 
   const showConsole = () => {
-    if (json() === "") {
-      return "请输入 JSON 数据";
+    if (json() === '') {
+      return '请输入 JSON 数据';
     }
 
-    if (typeof data() !== "object") {
+    if (typeof data() !== 'object') {
       return `你输入的值：${json()}，不是 JSON 格式`;
     }
 
-    return "show";
+    return 'show';
   };
 
   return (
@@ -49,18 +49,18 @@ const JsonRender = () => {
             onclick={(e) => {
               e.preventDefault();
               const f = new FormData(form());
-              setJson(f.get("json") as string);
+              setJson(f.get('json') as string);
             }}
           >
             确定
           </button>
         </form>
         <div role="tablist" class="tabs tabs-boxed">
-          <For each={["编辑", "编码"]}>
+          <For each={['编辑', '编码']}>
             {(itme) => (
               <div
                 class="tab "
-                classList={{ "tab-active": itme === index() }}
+                classList={{ 'tab-active': itme === index() }}
                 onclick={() => setIndex(itme)}
               >
                 {itme}
@@ -72,7 +72,7 @@ const JsonRender = () => {
 
       <div class="flex p-2 h-[500px]">
         <Show
-          when={showConsole() === "show"}
+          when={showConsole() === 'show'}
           fallback={
             <div class="mx-auto my-1 text-center">
               <div>{showConsole()}</div>
@@ -80,7 +80,7 @@ const JsonRender = () => {
           }
         >
           <Switch fallback={<div>请输入正确的格式</div>}>
-            <Match when={index() === "编辑"}>
+            <Match when={index() === '编辑'}>
               <div class="flex-1 flex flex-col">
                 <div class="breadcrumbs text-sm">
                   <ul>
@@ -109,7 +109,7 @@ const JsonRender = () => {
                 </div>
               </div>
             </Match>
-            <Match when={index() === "编码"}>
+            <Match when={index() === '编码'}>
               <div class="flex flex-col gap-2 flex-1">
                 <div class="flex flex-1 gap-2">
                   <div class="bg-base-100 rounded-lg flex-1 p-2">{`${data()}`}</div>

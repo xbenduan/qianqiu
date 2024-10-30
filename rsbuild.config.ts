@@ -9,4 +9,7 @@ export default defineConfig({
     }),
     pluginSolid(),
   ],
+  html: {
+    title: '浅秋~',
+  },
 });
