@@ -1,6 +1,11 @@
-import { lazy } from 'solid-js';
+import { type Component, lazy } from 'solid-js';
+export interface IRoutes {
+  path: string;
+  component: Component & { preload: () => Promise<{ default: Component }> };
+  mate: string;
+}
 
-export const routes = [
+export const routes: IRoutes[] = [
   {
     path: '/',
     component: lazy(() => import('./page/home')),

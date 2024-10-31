@@ -1,13 +1,21 @@
-import { Component, createSignal, For } from 'solid-js';
-import { A } from '@solidjs/router';
+import { type Component, createSignal, For, onMount } from 'solid-js';
+import { A, useLocation } from '@solidjs/router';
+import type { IRoutes } from '@/routes';
 
 /**
  * 后面再做适用性适配
  * @param props
  * @constructor
  */
-export const Tabs: Component<{ items: any[] }> = (props) => {
+export const Tabs: Component<{
+  items: IRoutes[];
+}> = (props) => {
   const [active, setActive] = createSignal<number>(0);
+  const location = useLocation();
+
+  onMount(() => {
+    setActive(props.items.findIndex((i) => i.path === location.pathname));
+  });
 
   return (
     <div role="tablist" class="tabs tabs-boxed  bg-white mx-auto my-4 relative">
