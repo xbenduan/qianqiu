@@ -1,13 +1,13 @@
-import type { Component, JSX } from 'solid-js';
-import type { BaseRouterProps } from '@solidjs/router';
-import { routes } from './routes';
+import { BaseRouterProps } from '@solidjs/router';
+import { Component, JSX } from 'solid-js';
 import { Tabs } from './components/tabs';
+import { routes } from './routes';
 
 const Index: Component<BaseRouterProps> = (props) => {
   return (
     <div class={'flex flex-col'}>
       <Tabs items={routes.filter((i) => !!i.mate)} />
-      <div style={{ height: 'calc(100vh - 72px)' }} class=" overflow-auto">
+      <div class="h-[calc(100vh_-_72px)] overflow-auto">
         {props.children as JSX.Element}
       </div>
     </div>

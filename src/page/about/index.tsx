@@ -1,9 +1,9 @@
-import type { Component } from 'solid-js';
+import { Component } from 'solid-js';
 
 const Index: Component = () => {
   return (
     <div class="m-[16px]">
-      <div class="hero bg-base-200 rounded-box opacity-85">
+      <div class="hero rounded-box bg-base-200 opacity-85">
         <div class="hero-content text-center">
           <div class="max-w-md">
             <h1 class="text-5xl font-bold">Hi，你好</h1>
