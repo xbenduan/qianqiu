@@ -18,7 +18,7 @@ export const Tabs: Component<{
   });
 
   return (
-    <div role="tablist" class="tabs tabs-boxed  bg-white mx-auto my-4 relative">
+    <div role="tablist" class="tabs-boxed tabs relative mx-auto my-4 bg-white">
       <For
         each={props.items}
         fallback={<span class="bg-red-500">出错了！！！</span>}
@@ -26,7 +26,7 @@ export const Tabs: Component<{
         {(item, index) => (
           <A
             role="tab"
-            class="tab w-[100px] relative"
+            class="tab relative w-[100px]"
             on:click={() => {
               setActive(index);
             }}
@@ -39,7 +39,7 @@ export const Tabs: Component<{
       <div
         style={`transform: translateX(${active() * 100}%)`}
         class={
-          'absolute inset-0 z-10 m-1 transition-all duration-300 rounded-box tab-active w-[100px]'
+          'tab-active absolute inset-0 z-10 m-1 w-[100px] rounded-box transition-all duration-300'
         }
       />
     </div>

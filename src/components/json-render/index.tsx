@@ -16,7 +16,7 @@ const JsonRender = () => {
   const data = () => {
     try {
       return JSON.parse(json());
-    } catch (error) {
+    } catch {
       return '';
     }
   };
@@ -34,10 +34,10 @@ const JsonRender = () => {
   };
 
   return (
-    <div class="w-[800px] rounded-box bg-base-200 m-2">
-      <ul class="flex p-[8px] border-b-2 border-base-100">
-        <div class="flex items-center flex-1">JSON编辑器</div>
-        <form ref={(e) => setForm(e)} class="flex gap-2 items-center mr-2">
+    <div class="m-2 w-[800px] rounded-box bg-base-200">
+      <ul class="flex border-b-2 border-base-100 p-[8px]">
+        <div class="flex flex-1 items-center">JSON编辑器</div>
+        <form ref={(e) => setForm(e)} class="mr-2 flex items-center gap-2">
           <input
             class="input input-sm w-full"
             placeholder="输入 json 数据"
@@ -45,7 +45,7 @@ const JsonRender = () => {
           />
           <button
             type="submit"
-            class="btn btn-sm btn-secondary"
+            class="btn btn-secondary btn-sm"
             onclick={(e) => {
               e.preventDefault();
               const f = new FormData(form());
@@ -55,11 +55,11 @@ const JsonRender = () => {
             确定
           </button>
         </form>
-        <div role="tablist" class="tabs tabs-boxed">
+        <div role="tablist" class="tabs-boxed tabs">
           <For each={['编辑', '编码']}>
             {(itme) => (
               <div
-                class="tab "
+                class="tab"
                 classList={{ 'tab-active': itme === index() }}
                 onclick={() => setIndex(itme)}
               >
@@ -70,7 +70,7 @@ const JsonRender = () => {
         </div>
       </ul>
 
-      <div class="flex p-2 h-[500px]">
+      <div class="flex h-[500px] p-2">
         <Show
           when={showConsole() === 'show'}
           fallback={
@@ -81,11 +81,11 @@ const JsonRender = () => {
         >
           <Switch fallback={<div>请输入正确的格式</div>}>
             <Match when={index() === '编辑'}>
-              <div class="flex-1 flex flex-col">
+              <div class="flex flex-1 flex-col">
                 <div class="breadcrumbs text-sm">
                   <ul>
                     <li>
-                      <div class="border-b-2 hover:border-white ">Home</div>
+                      <div class="border-b-2 hover:border-white">Home</div>
                     </li>
                     <li>
                       <div>Documents</div>
@@ -94,29 +94,29 @@ const JsonRender = () => {
                   </ul>
                 </div>
                 <div class="flex flex-1 overflow-y-hidden">
-                  <div class="flex-1 flex flex-col gap-2 overflow-y-auto">
+                  <div class="flex flex-1 flex-col gap-2 overflow-y-auto">
                     <For each={Object.keys(JSON.parse(json()))}>
                       {(itme) => (
-                        <div class="flex justify-between bg-base-100 rounded-lg p-2 active:bg-base-200">
+                        <div class="flex justify-between rounded-lg bg-base-100 p-2 active:bg-base-200">
                           <div>{itme}</div>
                           <div>{JSON.parse(json())[itme]}</div>
                         </div>
                       )}
                     </For>
                   </div>
-                  <div class="w-[2px] rounded-sm bg-base-100 flex mx-2" />
+                  <div class="mx-2 flex w-[2px] rounded-sm bg-base-100" />
                   <div class="flex-1">22</div>
                 </div>
               </div>
             </Match>
             <Match when={index() === '编码'}>
-              <div class="flex flex-col gap-2 flex-1">
+              <div class="flex flex-1 flex-col gap-2">
                 <div class="flex flex-1 gap-2">
-                  <div class="bg-base-100 rounded-lg flex-1 p-2">{`${data()}`}</div>
-                  <div class="bg-base-100 rounded-lg flex-1 p-2">{`${data()}`}</div>
+                  <div class="flex-1 rounded-lg bg-base-100 p-2">{`${data()}`}</div>
+                  <div class="flex-1 rounded-lg bg-base-100 p-2">{`${data()}`}</div>
                 </div>
 
-                <div class="bg-base-100 rounded-lg p-2 h-[100px]">{`${data()}`}</div>
+                <div class="h-[100px] rounded-lg bg-base-100 p-2">{`${data()}`}</div>
               </div>
             </Match>
           </Switch>
