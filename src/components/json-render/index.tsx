@@ -57,13 +57,13 @@ const JsonRender = () => {
         </form>
         <div role="tablist" class="tabs-boxed tabs">
           <For each={['编辑', '编码']}>
-            {(itme) => (
+            {(item) => (
               <div
                 class="tab"
-                classList={{ 'tab-active': itme === index() }}
-                onclick={() => setIndex(itme)}
+                classList={{ 'tab-active': item === index() }}
+                onclick={() => setIndex(item)}
               >
-                {itme}
+                {item}
               </div>
             )}
           </For>
@@ -96,10 +96,10 @@ const JsonRender = () => {
                 <div class="flex flex-1 overflow-y-hidden">
                   <div class="flex flex-1 flex-col gap-2 overflow-y-auto">
                     <For each={Object.keys(JSON.parse(json()))}>
-                      {(itme) => (
+                      {(item) => (
                         <div class="flex justify-between rounded-lg bg-base-100 p-2 active:bg-base-200">
-                          <div>{itme}</div>
-                          <div>{JSON.parse(json())[itme]}</div>
+                          <div>{item}</div>
+                          <div>{JSON.parse(json())[item]}</div>
                         </div>
                       )}
                     </For>
