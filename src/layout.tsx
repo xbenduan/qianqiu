@@ -10,6 +10,11 @@ const Index: Component<BaseRouterProps> = (props) => {
       <div class="h-[calc(100vh_-_72px)] overflow-auto">
         {props.children as JSX.Element}
       </div>
+      <div class="flex justify-center">
+        <a href="https://beian.miit.gov.cn/" target="_blank">
+          黔ICP备2022002191号-1
+        </a>
+      </div>
     </div>
   );
 };

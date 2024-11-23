@@ -3,14 +3,19 @@
     "Cpath",
     "Csvg",
     "daisyui",
+    "flyonui",
     "qianqiu",
     "rsbuild",
     "solidjs",
+    "tabler",
     "tailwindcss"
   ],
   "editor.fontSize": 18,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always",
     "source.organizeImports": "always"
